@@ -28,14 +28,15 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "django_extensions",
-    "drf_yasg"
-
+    "drf_yasg",
     # APPS
+    "apps.yt_api.apps.YtApiConfig"
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -154,8 +155,10 @@ INTERNAL_IPS = [
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
+GAPI_KEY = env.GOOGLE_API_KEY
+KEYWORD = env.KEYWORD
 
-# Swagger setup
+# Swagger setupgi
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Basic': {
