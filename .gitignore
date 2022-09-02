@@ -10,6 +10,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
+.idea
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -132,6 +133,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+*/env.py
+*/docker.env
+
 .env
 .venv
 env/
@@ -139,9 +143,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-env.py
 
-.idea
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -171,7 +173,6 @@ cython_debug/
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
-
