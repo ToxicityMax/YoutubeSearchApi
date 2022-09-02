@@ -14,6 +14,7 @@ class VideoDetails(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        """Indexes for database tables"""
         indexes = [
             models.Index(fields=['title', 'description']),
             models.Index(fields=['channel_id']),
