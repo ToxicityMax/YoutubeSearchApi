@@ -1,5 +1,4 @@
 import django.http
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path, include, re_path
@@ -8,13 +7,11 @@ from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
 
 
-# from .settings import MEDIA_URL, MEDIA_ROOT, STATIC_ROOT, STATIC_URL
-
-
 def home(request: django.http.HttpRequest):
     return HttpResponse("Api server running")
 
 
+"""Swagger setup for the project"""
 schema_view = get_schema_view(
     openapi.Info(
         title="Fampay Assingment apis",

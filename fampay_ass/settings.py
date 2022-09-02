@@ -16,8 +16,6 @@ DEBUG = env.DEBUG
 
 ALLOWED_HOSTS = ['*']
 
-# Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -30,7 +28,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     "drf_yasg",
-    # 'djcelery',
     # APPS
     "apps.yt_api.apps.YtApiConfig"
 ]
@@ -155,14 +152,6 @@ INTERNAL_IPS = [
     'localhost',
 ]
 
-# CORS
-CORS_ALLOW_ALL_ORIGINS = True
-if len(env.GOOGLE_API_KEYS):
-    GAPI_KEYS = env.GOOGLE_API_KEYS
-else:
-    raise Exception("Atleast 1 key required")
-KEYWORD = env.KEYWORD
-
 # Swagger setupgi
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
@@ -177,8 +166,19 @@ SWAGGER_SETTINGS = {
     },
 }
 
-timezone = "Asia/Kolkata"
+# CORS
+CORS_ALLOW_ALL_ORIGINS = True
+if len(env.GOOGLE_API_KEYS):
+    GAPI_KEYS = env.GOOGLE_API_KEYS
+else:
+    raise Exception("Atleast 1 key required")
+KEYWORD = env.KEYWORD
+
 # Celery Configuration Options
+timezone = "Asia/Kolkata"
 CELERY_TIMEZONE = "Asia/Kolkata"
 CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

@@ -1,10 +1,10 @@
-from django.urls import path, include
-from .views import (RegisterKeyword, VideoPaginatedResponse, SearchView)
-from rest_framework import routers
+from django.urls import path
+
+from .views import (
+    VideoPaginatedResponse,
+    SearchView)
 
 urlpatterns = [
-    path('keyword/', RegisterKeyword.as_view()),
     path('search/', SearchView.as_view()),
     path('', VideoPaginatedResponse.as_view())
-    # path('/initiate',)
 ]
