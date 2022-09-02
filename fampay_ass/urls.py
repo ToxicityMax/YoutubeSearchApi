@@ -28,7 +28,7 @@ path('', home, name="HOME")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('search/', include('apps.yt_api.urls')),
+    path('yt/', include('apps.yt_api.urls')),
     path('', home, name="HOME")
 ]
 

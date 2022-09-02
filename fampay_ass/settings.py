@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     "drf_yasg",
+    # 'djcelery',
     # APPS
     "apps.yt_api.apps.YtApiConfig"
 ]
@@ -155,7 +157,10 @@ INTERNAL_IPS = [
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
-GAPI_KEY = env.GOOGLE_API_KEY
+if len(env.GOOGLE_API_KEYS):
+    GAPI_KEYS = env.GOOGLE_API_KEYS
+else:
+    raise Exception("Atleast 1 key required")
 KEYWORD = env.KEYWORD
 
 # Swagger setupgi
@@ -171,3 +176,9 @@ SWAGGER_SETTINGS = {
         }
     },
 }
+
+timezone = "Asia/Kolkata"
+# Celery Configuration Options
+CELERY_TIMEZONE = "Asia/Kolkata"
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
