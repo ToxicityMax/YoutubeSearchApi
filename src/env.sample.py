@@ -1,12 +1,12 @@
 DEBUG = True / False
 SECRET = "anysecretkey"
 GOOGLE_API_KEYS = ["key1", "key2"]
-DATABASE = "postgres" / "local"
+DATABASE = "postgres"
 KEYWORD = "music"  # Keyword to make request to youtube
 DB_USER = "db_user"
 DB_NAME = "db_name"
 DB_PASSWORD = "db_password"
-DB_HOST = "db_host"
+DB_HOST = "db"
 DB_PORT = "db_port"
-CELERY_BROKER_URL = "url"
-CELERY_RESULT_BACKEND = "url2"
+CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/1"
