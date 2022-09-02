@@ -1,5 +1,6 @@
 import os
 from uuid import uuid4
+
 from django.utils.deconstruct import deconstructible
 from rest_framework.response import Response
 
@@ -30,3 +31,10 @@ class UploadTo(object):
         extension = filename.split('.')[-1]
         filename = '{}.{}'.format(uuid4().hex[:12], extension)
         return os.path.join(self.path, filename)
+
+
+def validate_image(image):
+    file_size = image.file.size
+    limit_mb = 20
+    if file_size > limit_mb * 1024 * 1024:
+        raise ValidationError("Max size of file is %s MB" % limit)
