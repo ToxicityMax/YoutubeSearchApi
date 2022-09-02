@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     "drf_yasg",
+    "django.contrib.postgres",
     # APPS
     "apps.yt_api.apps.YtApiConfig"
 ]

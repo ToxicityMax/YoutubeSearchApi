@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.utils.decorators import method_decorator
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
@@ -67,7 +67,14 @@ class SearchView(generics.ListAPIView):
     permission_classes = [AllowAny]
     serializer_class = OutputSerializer
     pagination_class = StandardResultPagination
+    search_vector = SearchVector('title', 'description')
 
     def get_queryset(self):
         q = self.request.GET.get('q', None)
-        return VideoDetails.objects.filter(Q(title__contains=q) | Q(description__contains=q)).all()
+        search_query = SearchQuery(q)
+        # Full Text search with postgres
+        return VideoDetails.objects.annotate(search=self.search_vector,
+                                             rank=SearchRank(self.search_vector, search_query)).filter(
+            search=q).order_by("-rank")
+        # Partial Text search
+        # return VideoDetails.objects.filter(Q(title__contains=q) | Q(description__contains=q)).all()
