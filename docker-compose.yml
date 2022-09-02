@@ -28,7 +28,7 @@ services:
       - static_volume:/backend/static
       - media_volume:/backend/media
     ports:
-      - 25000:80
+      - 80:80
     depends_on:
       - web
 
