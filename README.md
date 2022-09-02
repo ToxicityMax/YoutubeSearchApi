@@ -15,7 +15,7 @@ touch env.py docker.env
 DEBUG = True / False
 SECRET = "anysecretkey"
 GOOGLE_API_KEYS = ["key1", "key2"]
-DATABASE = "postgres" / "local"
+DATABASE = "postgres"
 KEYWORD = "music"  # Keyword to make request to youtube
 DB_USER = "db_user"
 DB_NAME = "db_name"
